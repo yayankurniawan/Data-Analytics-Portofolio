@@ -63,21 +63,37 @@ Jika aku perhatikan, struktur tabel ms_produk terdiri dari empat kolom (column),
 - 
 Dan dalam tabel tersebut terdapat 10 baris data (row) dengan isi data yang bervariasi, contoh isi data untuk kolom "nama_produk" pada baris kelima adalah "Gift Voucher DQLab 250rb".
 ## Tugas
-### Mengambil Seluruh Kolom dalam suatu Tabel
+### Proyek dari Cabang A
+“Jadi, apakah kamu bisa menyiapkan data transaksi penjualan dengan total revenue >= IDR 100.000? 
+
+Format datanya yang akan kamu tampilkan adalah: kode_pelanggan, nama_produk, qty, harga, dan total, serta diurutkan mulai dari total revenue terbesar,” pinta Senja padaku.
+
+Kalau kasusnya seperti ini, berarti aku perlu meng-query data tersebut dari tabel tr_penjualan yang terdapat di database perusahaan.
+
+Aku dapat melakukan :
+
+- perkalian antara kolom qty dan harga untuk memperoleh total revenue setiap kode pelanggan yang dinyatakan ke dalam kolom total, dan
+- menggunakan “ORDER BY total DESC” pada akhir query untuk mengurutkan data.
+
+Jawaban :
+
 ```sql
-SELECT nama_produk, harga
-FROM ms_produk
-WHERE harga > 100000;
+SELECT 
+    kode_pelanggan,
+    nama_produk,
+    qty,
+    harga,
+    qty * harga AS total
+FROM 
+    tr_penjualan
+WHERE 
+    qty * harga >= 100000
+ORDER BY 
+    total DESC;
+
 ```
 Output:
 
-<img width="460" height="225" alt="image" src="https://github.com/user-attachments/assets/93e51ebf-cc43-41c4-b81e-21ee81e52b44" />
+<img width="448" height="225" alt="image" src="https://github.com/user-attachments/assets/e6ab9cd1-2fc4-4d2f-a4cd-1122c98b2a9e" />
 
-### Mengambil Satu Kolom dari Tabel
-```
-SELECT nama_produk FROM ms_produk;
-```
-Output:
-
-<img width="247" height="226" alt="image" src="https://github.com/user-attachments/assets/92ad37ad-10b7-4240-a165-e6ba29fde677" />
 
